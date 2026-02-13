@@ -1712,40 +1712,35 @@
     <div class="media-item fade-in" style="animation-delay: 0.15s" onclick="openFullscreen(0)">
       <img src="photos/photo1.jpg" alt="Memory 1">
     </div>
-    <div class="media-item fade-in" id="photo2-item" style="animation-delay: 0.2s" onclick="checkSpoiler(event, 1)">
-      <img src="photos/photo2.jpg" alt="Memory 2">
-      <div class="media-spoiler" id="photo2-spoiler">
-        <button class="spoiler-btn" onclick="revealSpoiler(event)">وريني الصورة</button>
-      </div>
-    </div>
-    <div class="media-item fade-in" style="animation-delay: 0.25s" onclick="openFullscreen(2)">
+
+    <div class="media-item fade-in" style="animation-delay: 0.25s" onclick="openFullscreen(1)">
       <img src="photos/photo3.jpg" alt="Memory 3">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.3s" onclick="openFullscreen(3)">
+    <div class="media-item fade-in" style="animation-delay: 0.3s" onclick="openFullscreen(2)">
       <img src="photos/photo4.jpg" alt="Memory 4">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.35s" onclick="openFullscreen(4)">
+    <div class="media-item fade-in" style="animation-delay: 0.35s" onclick="openFullscreen(3)">
       <img src="photos/photo5.jpg" alt="Memory 5">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.4s" onclick="openFullscreen(5)">
+    <div class="media-item fade-in" style="animation-delay: 0.4s" onclick="openFullscreen(4)">
       <img src="photos/photo6.jpg" alt="Memory 6">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.45s" onclick="openFullscreen(6)">
+    <div class="media-item fade-in" style="animation-delay: 0.45s" onclick="openFullscreen(5)">
       <img src="photos/photo7.jpg" alt="Memory 7">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.5s" onclick="openFullscreen(7)">
+    <div class="media-item fade-in" style="animation-delay: 0.5s" onclick="openFullscreen(6)">
       <img src="photos/photo8.png" alt="Memory 8">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.55s" onclick="openFullscreen(8)">
+    <div class="media-item fade-in" style="animation-delay: 0.55s" onclick="openFullscreen(7)">
       <img src="photos/photo9.png" alt="Memory 9">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.6s" onclick="openFullscreen(9)">
+    <div class="media-item fade-in" style="animation-delay: 0.6s" onclick="openFullscreen(8)">
       <img src="photos/photo10.png" alt="Memory 10">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.65s" onclick="openFullscreen(10)">
+    <div class="media-item fade-in" style="animation-delay: 0.65s" onclick="openFullscreen(9)">
       <img src="photos/photo11.png" alt="Memory 11">
     </div>
-    <div class="media-item fade-in" style="animation-delay: 0.7s" onclick="openFullscreen(11)">
+    <div class="media-item fade-in" style="animation-delay: 0.7s" onclick="openFullscreen(10)">
       <img src="photos/photo12.png" alt="Memory 12">
     </div>
   </div>
@@ -1822,7 +1817,6 @@
 /* ══ MEDIA DATA ══ */
 var mediaItems = [
   { type: 'image', src: 'photos/photo1.jpg' },
-  { type: 'image', src: 'photos/photo2.jpg' },
   { type: 'image', src: 'photos/photo3.jpg' },
   { type: 'image', src: 'photos/photo4.jpg' },
   { type: 'image', src: 'photos/photo5.jpg' },
@@ -1836,23 +1830,6 @@ var mediaItems = [
 ];
 
 var currentMediaIndex = 0;
-var photo2Revealed = false;
-
-/* ══ SPOILER FUNCTIONS ══ */
-function revealSpoiler(event) {
-  event.stopPropagation();
-  var spoiler = document.getElementById('photo2-spoiler');
-  spoiler.classList.add('revealed');
-  photo2Revealed = true;
-}
-
-function checkSpoiler(event, index) {
-  if (!photo2Revealed) {
-    event.stopPropagation();
-    return;
-  }
-  openFullscreen(index);
-}
 
 /* ══ FULLSCREEN VIEWER ══ */
 function openFullscreen(index) {
