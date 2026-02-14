@@ -67,13 +67,14 @@ The repository now has:
 The user needs to complete the setup by:
 
 1. **Creating a private GitHub repository** for the photos
-2. **Pushing the submodule** to that private repository:
+2. **Adding photos** to that repository in a `photos/` directory
+3. **Adding the repository as a submodule**:
    ```bash
-   cd docs/private-photos
-   git remote add origin https://github.com/USERNAME/PRIVATE-REPO.git
-   git push -u origin main
+   git submodule add https://github.com/USERNAME/PRIVATE-REPO.git docs/private-photos
+   git add .gitmodules docs/private-photos
+   git commit -m "Add private photos submodule"
+   git push
    ```
-3. **Updating the submodule URL** in `.gitmodules` to point to the private repository
 4. **Testing** that GitHub Pages still works with the submodule
 
 Detailed instructions are provided in:
@@ -90,8 +91,9 @@ Detailed instructions are provided in:
 
 ## ⚠️ Important Notes
 
-- The submodule URL in `.gitmodules` is currently a placeholder (`https://github.com/tsTsuki/HappyValentine-Photos.git`)
-- This needs to be updated to the actual private repository URL after creation
+- The submodule configuration has been **removed** to prevent clone errors
+- The original submodule referenced a non-existent repository (`https://github.com/tsTsuki/HappyValentine-Photos.git`)
+- The user needs to create their own private repository and add it as a submodule
 - GitHub Pages will need access to the private submodule (requires GitHub Pro/Team/Enterprise for private submodules)
 - Alternative: Keep photos repository public if GitHub account doesn't support private submodules with Pages
 
