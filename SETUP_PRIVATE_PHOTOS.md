@@ -1,20 +1,19 @@
 # Setup Guide: Private Photos Submodule
 
-This guide explains how to complete the setup of the private photos submodule for the HappyValentine project.
+This guide explains how to set up a private photos submodule for the HappyValentine project.
 
 ## Overview
 
-The photos have been moved from `docs/photos/` to a Git submodule at `docs/private-photos/`. This allows you to:
+The website has been configured to load photos from `docs/private-photos/photos/`. This allows you to:
 - Keep photos in a **private repository** separate from the main project
-- Still use the photos in your website through the submodule
+- Still use the photos in your website through a Git submodule
 - Control access to the photos independently from the main repository
 
-## What Has Been Done
+## Current Status
 
-✅ All photos moved to `docs/private-photos/photos/`  
-✅ HTML references updated to point to the new location  
-✅ Git submodule configuration created  
+✅ HTML references updated to point to `private-photos/photos/`  
 ✅ Old `docs/photos/` directory removed  
+⚠️ Submodule configuration removed (to prevent clone errors until you create your private repository)
 
 ## What You Need to Do
 
@@ -23,49 +22,56 @@ The photos have been moved from `docs/photos/` to a Git submodule at `docs/priva
 1. Go to GitHub and create a **new private repository**
 2. Suggested name: `HappyValentine-Photos` or `HappyValentine-Private`
 3. **Important**: Make sure it's set to **Private**
-4. Do NOT initialize with README, .gitignore, or license (we already have content)
+4. You can initialize with README, .gitignore, or license (optional)
 
-### Step 2: Push the Private Photos Repository
+### Step 2: Add Photos to Your Private Repository
 
-The private photos repository is currently stored locally in the submodule. You need to push it to GitHub:
+Upload your photos to the private repository:
+
+1. Clone the private repository locally:
+   ```bash
+   git clone https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
+   cd YOUR_PRIVATE_REPO
+   ```
+
+2. Create a `photos/` directory and add your images:
+   ```bash
+   mkdir -p photos
+   # Copy your photos to the photos/ directory
+   # e.g., photo1.jpg, photo3.jpg, photo4.jpg, etc.
+   ```
+
+3. Commit and push:
+   ```bash
+   git add photos/
+   git commit -m "Add photos"
+   git push
+   ```
+
+### Step 3: Add the Private Repository as a Submodule
+
+Return to your main HappyValentine repository and add the submodule:
 
 ```bash
-# Navigate to the submodule directory
-cd docs/private-photos
+# Make sure you're in the root of HappyValentine repository
+cd /path/to/HappyValentine
 
-# Add your new private repository as the remote
-git remote add origin https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
+# Add the private repository as a submodule
+git submodule add https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git docs/private-photos
 
-# Push the photos to your private repository
-git push -u origin main
+# Commit the submodule
+git add .gitmodules docs/private-photos
+git commit -m "Add private photos submodule"
+git push
 ```
 
-### Step 3: Update the Submodule Configuration
+### Step 4: Verify the Setup
 
-After pushing to GitHub, update the submodule URL in the main repository:
+Initialize and update the submodule:
 
 ```bash
-# Go back to the main repository root
-cd ../..
-
-# Update the submodule URL to your actual private repository
-git config -f .gitmodules submodule.docs/private-photos.url https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
-
-# Sync the submodule configuration
-git submodule sync
-
 # Update the submodule
-git submodule update --init --recursive --remote
-```
-
-### Step 4: Update README.md (Optional)
-
-Edit `.gitmodules` file to use your actual repository URL:
-
-```
-[submodule "docs/private-photos"]
-	path = docs/private-photos
-	url = https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
+git submodule update --init --recursive
 ```
 
 ## How This Works
