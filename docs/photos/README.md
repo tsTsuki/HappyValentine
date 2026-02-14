@@ -2,6 +2,22 @@
 
 This directory should contain your personal photos for the Valentine's Day website.
 
+## Quick Start
+
+### Option 1: Add Your Own Photos (Recommended)
+Simply copy your photo files into this directory with the correct names (see Required Photos below).
+
+### Option 2: Generate Placeholders for Testing
+If you want to test the website before adding real photos:
+
+```bash
+# Requires ImageMagick
+cd docs/photos
+./create_placeholders.sh
+```
+
+This will create colorful placeholder images that you can replace later.
+
 ## Required Photos
 
 Place the following photo files in this directory:
