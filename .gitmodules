@@ -1,0 +1,3 @@
+[submodule "docs/private-photos"]
+	path = docs/private-photos
+	url = https://github.com/tsTsuki/HappyValentine-Photos.git
