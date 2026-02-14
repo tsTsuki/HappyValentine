@@ -41,7 +41,7 @@ Edit `.gitmodules` in the main repository and replace the URL:
 
 Then sync:
 ```bash
-cd /home/runner/work/HappyValentine/HappyValentine
+cd ../..
 git add .gitmodules
 git commit -m "Update submodule URL to private repository"
 git push

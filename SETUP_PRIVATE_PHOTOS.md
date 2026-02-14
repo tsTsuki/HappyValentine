@@ -46,7 +46,7 @@ After pushing to GitHub, update the submodule URL in the main repository:
 
 ```bash
 # Go back to the main repository root
-cd /home/runner/work/HappyValentine/HappyValentine
+cd ../..
 
 # Update the submodule URL to your actual private repository
 git config -f .gitmodules submodule.docs/private-photos.url https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git
