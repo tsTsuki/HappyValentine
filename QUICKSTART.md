@@ -1,70 +1,58 @@
-# Quick Start: Setup Private Photos Repository
+# Quick Start: Add Your Photos
 
 ## Current Status
 
-✅ HTML references updated to expect photos at `private-photos/photos/`  
-✅ Old photos directory removed from the repository  
-⚠️ Submodule configuration removed (to prevent clone errors)  
+✅ HTML references updated to use `photos/` directory  
+✅ `docs/photos/` directory created and ready for your images  
+✅ Website ready to display photos once you add them  
 
-## Next Steps (REQUIRED to restore photos)
+## Next Steps (Add Your Photos)
 
-The photos submodule has been temporarily removed because it was referencing a non-existent repository. To restore the photos functionality:
+### Simple Setup (Recommended)
 
-### 1. Create a Private GitHub Repository
+The easiest way to get your website working with photos:
 
-Go to GitHub and create a new **private** repository:
-- Name suggestion: `HappyValentine-Photos`
-- Set visibility to **Private**
-- Initialize with README (recommended)
+1. **Add Your Photos to `docs/photos/` Directory**
 
-### 2. Add Your Photos
+   Place your photo files in the `docs/photos/` directory:
+   - `photo1.jpg`, `photo3.jpg`, `photo4.jpg`, `photo5.jpg`, `photo6.jpg`, `photo7.jpg` (JPG files)
+   - `photo8.png`, `photo9.png`, `photo10.png`, `photo11.png`, `photo12.png` (PNG files)
 
-Upload your photos to the private repository:
-- Create a `photos/` directory
-- Add all your photo files (photo1.jpg, photo3.jpg, etc.)
-- Commit and push
+2. **Commit and Push**
 
-### 3. Add as Submodule
+   ```bash
+   git add docs/photos/
+   git commit -m "Add photos"
+   git push
+   ```
 
-From your main HappyValentine repository:
+3. **Test Locally**
 
-```bash
-# Add the private repository as a submodule
-git submodule add https://github.com/YOUR_USERNAME/YOUR_PRIVATE_REPO.git docs/private-photos
+   ```bash
+   cd docs
+   python3 -m http.server 8000
+   ```
+   
+   Visit http://localhost:8000 and verify all photos load correctly.
 
-# Commit the submodule configuration
-git add .gitmodules docs/private-photos
-git commit -m "Add private photos submodule"
-git push
-```
+## Privacy Considerations
 
-### 4. Verify Setup
+⚠️ **Important**: If you commit photos to `docs/photos/` in a **public repository**, anyone can see them.
 
-After setting up the submodule:
+### Options for Privacy:
 
-```bash
-# Initialize and update the submodule
-git submodule update --init --recursive
+1. **Make Repository Private** (Simplest)
+   - Go to repository Settings → Change visibility to Private
+   - Photos will be protected along with the rest of your repository
 
-# Test locally
-cd docs
-python3 -m http.server 8000
-```
-
-Visit http://localhost:8000 and verify photos load correctly.
-
-## For More Details
-
-See [SETUP_PRIVATE_PHOTOS.md](SETUP_PRIVATE_PHOTOS.md) for complete documentation.
-
-## Important Notes
-
-⚠️ **Why was the submodule removed?**
-The submodule configuration was referencing a non-existent repository (`https://github.com/tsTsuki/HappyValentine-Photos.git`), which caused clone errors in CI/CD pipelines. It has been removed until you create your actual private repository.
+2. **Use Private Submodule** (Advanced)
+   - Keep photos in a separate private repository
+   - See [SETUP_PRIVATE_PHOTOS.md](SETUP_PRIVATE_PHOTOS.md) for detailed instructions
+   - Note: Requires GitHub Pro/Team/Enterprise for private submodules with GitHub Pages
 
 ## Result
 
-Once complete:
-- Main repository: Can stay public (no photos in it)
-- Photos repository: Private (only you and collaborators can access)
-- Website: Works normally with photos via submodule 🎉
+Once you add your photos:
+- Website will display all 11 photos in the gallery
+- Photos will work both locally and on GitHub Pages
+- Easy to update photos by simply replacing files in `docs/photos/`
